@@ -1,5 +1,5 @@
 <?php
-	
+	//Checking the session variable
 	if(isset($_SESSION['key']) && $_SESSION['key']==='User')
     {
     ?>
@@ -7,6 +7,7 @@
 	<html>
 	<head>
 	    <title>Book Tickets</title>
+	    <!--Including Bootstrap Files,Jquery and Stylesheet -->
 	    <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -18,8 +19,11 @@
 	</head>
 	<body>
     <?php
+    //Header
     include 'header.php';
+    //DB Connect
 	include 'db.php';
+	//Getting the form values and storing in variable
 	$movie_name=$_POST['movie_name'];
 	$screen=$_POST['screen'];
 	$date=$_POST['date'];
@@ -27,6 +31,7 @@
 	$ticket_price=$_POST['ticket_price'];
 	$seat_no=$_POST['seat_no'];
 	$email=$_SESSION['email'];
+	//Sql query to insert the booking details to DB table
 	$sql="INSERT INTO booking_details (`movie_name`,`screen`,`date`,`show_time`,`seat_no`,`ticket_price`,`user_email`) VALUES ('$movie_name','$screen','$date','$show_time',$seat_no,'$ticket_price','$email')";
 	if(mysqli_query($con,$sql))
 	{
@@ -34,6 +39,7 @@
 			<h2 class="text-center text-success">Your Ticket has been booked Successfully</h2>
             <div class="table-responsive">
                 <table class="table">
+                <!-- Display the Confirmation Message -->
                 <tr><th>Movie Name</th><th>Screen</th><th>Show Time</th><th>Date</th><th>Seat No</th><th>Amount</th></tr>
                 <tr>
                     <td><?php echo $movie_name; ?></td>

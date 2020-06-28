@@ -1,4 +1,5 @@
 <?php
+//Checking session variables
 if(isset($_SESSION['key']) && $_SESSION['key']==='Admin')
 {
 ?>
@@ -6,6 +7,7 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='Admin')
 <html>
 <head>
 	<title>Add Movie</title>
+    <!--Including Bootstrap Files,Jquery and Stylesheet -->
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -13,12 +15,13 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='Admin')
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/home.css">
-    <!-- <link rel="stylesheet" type="text/css" href="css/login.css"> -->
     <script src="js/font.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    <!-- Header -->
 	<?php include 'header.php';  ?><br/>
+    <!-- Add Movie Form -->
     <div class="d-flex justify-content-center ">
         <div class="card  alert-primary">
             <div class="card-header text-center">
@@ -85,7 +88,7 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='Admin')
     </div>
     <br/>
     <br/>
-   
+    <!-- Footer -->
 	<?php include 'footer.php'; ?>
 </body>
 </html>

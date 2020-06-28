@@ -1,4 +1,5 @@
 <?php
+//Checking for session variable
 if(isset($_SESSION['key']) && $_SESSION['key']==='User')
 {
 ?>
@@ -6,6 +7,7 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='User')
 <html>
 <head>
     <title>Book Tickets</title>
+    <!--Including Bootstrap Files,Jquery and Stylesheet -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -17,11 +19,14 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='User')
 </head>
 <body>
     <?php 
+        //Header
         include 'header.php';
+        //DB Connect
         include 'db.php';
     ?>
         <div class="container-fluid">
         <div class="row">
+            <!-- Form to get Availability -->
             <div class="col-sm-4">
             <div class="card  alert-primary">
                 <div class="card-header text-center">
@@ -60,6 +65,7 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='User')
                     </div>
                 </div>
             </div>
+            <!-- To display the avaliabilty -->
             <div class="col-sm-8 text-center" >
                 <div class="spinner-border text-primary" style="display: none"></div>
                 <div id="movie_details">
@@ -71,11 +77,11 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='User')
         
     
     <br/>
-
+    <!-- Footer -->
     <?php include 'footer.php'; ?>
 
 <script>
-
+//AJAX Call to get Avaliability
 $('#movie_list').submit(function(e)
 {
     e.preventDefault();

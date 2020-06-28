@@ -1,3 +1,4 @@
+<!-- Login Form -->
 <div class="card" style="border:1px solid #003366">
             <div class="card-header">
                 <h2 style="color:#003366" class="text-center"><i>Login</i></h2>
@@ -29,6 +30,7 @@
                 </form>      
             </div>
 </div>
+<!-- Forgot Password Form in Modal -->
 <div class="modal" id="forgot_password">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -64,6 +66,7 @@ $('input').focus(function()
 {
   $('#error').html('');
 });
+//AJAX call to validate user
 $('#login-form').submit(function(e)
 {
     e.preventDefault();
@@ -88,6 +91,7 @@ $('#login-form').submit(function(e)
         }
     });
 });
+//Ajax call to get forgot password
 $('#forgot_password_form').submit(function(e)
 {
     e.preventDefault();
@@ -102,4 +106,5 @@ $('#forgot_password_form').submit(function(e)
     });
 });
 </script>
+<!-- Sign Up Form -->
 <?php include 'signup_form.php'; ?>

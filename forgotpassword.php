@@ -1,9 +1,12 @@
 <?php
-	if(isset($_POST['mail']))
+	//Checking whether the variable is set or not
+	if(isset($_POST['email']))
 	{
-	$mail=$_POST['mail'];
+	$email=$_POST['email'];
+	//DB Connect
 	include 'db.php';
-	$sql="SELECT * FROM user WHERE email='$mail'";
+	//Sql Query to get user details
+	$sql="SELECT * FROM user WHERE email='$email'";
 	if($res=mysqli_query($con,$sql))
 	{
 		if(mysqli_num_rows($res)==1)
@@ -11,6 +14,7 @@
 			$row=mysqli_fetch_array($res);
 			$alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@!#$%^&*';
 		    $pass =array();
+		    //Generating random password
 		    $alphaLength = strlen($alphabet) - 1; 
 		    for ($i = 0; $i < 8; $i++) {
 		        $n = rand(0, $alphaLength);
@@ -18,6 +22,7 @@
 		    }
 		    $reset=implode($pass);
 		    $password=md5($reset);
+		    //Sql query to update new password in DB table
 		    $sql1="UPDATE user SET password='$password' WHERE email='$email'";
 			if(!mysqli_query($con,$sql1))
 			{
@@ -25,6 +30,7 @@
 			}
 			else
 			{
+				//Sending the password through Mail
 				$to = $email;
 				$subject = "Skcinemas Account Password";
 				$headers = "Reply-To: <hypertexttechies2020@gmail.com>\r\n";
@@ -38,6 +44,7 @@
 				$message="Hi ".$row['name'].",\r\nYour SK Cinemas Account Password is ".$reset."\r\nYou can Login using Your Email id and this Password.";
 				 $message.="\r\n";
 				$message.="Thank You!";
+				//Mail function to send mail
 				mail($to,$subject,$message,$headers);
 				?>
 

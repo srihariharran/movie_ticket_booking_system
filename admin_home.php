@@ -1,4 +1,5 @@
 <?php
+//Checking session variable
 if(isset($_SESSION['key']) && $_SESSION['key']==='Admin')
 {
 ?>
@@ -6,6 +7,7 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='Admin')
 <html>
 <head>
     <title>Home-Admin</title>
+    <!--Including Bootstrap Files,Jquery and Stylesheet -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -17,11 +19,13 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='Admin')
 </head>
 <body>
     <?php 
+        //Header
         include 'header.php';
-            
+        //DB Connect
         include 'db.php';
+        //Getting Current System Date
         $date=date('Y-m-d');
-        
+        //Sql Query to get the movie details from DB table
         $sql="SELECT movie_name,poster,screen,date,show_timings FROM movie_details WHERE date='$date'";
         if($res=mysqli_query($con,$sql))
         {
@@ -57,6 +61,7 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='Admin')
         }
     ?>
     <br/></div>
+    <!-- Footer -->
     <?php include 'footer.php'; ?>
 </body>
 </html>

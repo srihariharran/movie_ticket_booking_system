@@ -1,12 +1,13 @@
+<!-- SideNavBar -->
 <div id="mySidenav" class="sidenav">
             <button class="closebtn btn"  onclick="closeNav()">&times;</button>
             <?php
+            //checking the session variable to display the result based on condition
             if(isset($_SESSION['name']) && isset($_SESSION['key']) && $_SESSION['key']==='Admin')
             {
                 ?>
                 <a href="admin_home.php"><i class="fa fa-home"></i>&nbsp;Home</a>
                 <a href="add_movie_form.php"><i class="fa fa-plus"></i>&nbsp;Add Movie</a>
-                <!-- <a href="new_user_form.php"><i class="fa fa-sign-in"></i>&nbsp;Create New User</a> -->
                 <a href="logout.php"><i class="fa fa-sign-out"></i>&nbsp;Logout</a>
                 <?php
             }
@@ -29,6 +30,7 @@
             }
             ?>
 </div>
+<!-- Header -->
 <div class="sticky-top">
 <nav class="navbar navbar-dark" >
     <div class="text-left"><img src="images/logo.png" width="40px">&nbsp;<i>SK Cinemas</i></div>
@@ -37,6 +39,7 @@
     </div>
 </nav>
 </div>
+<!-- Display User Name after Login using Session Variable -->
 <?php
     if(isset($_SESSION['name']) && isset($_SESSION['key']) && $_SESSION['key']==='Admin')
     {
@@ -55,6 +58,7 @@
         <?php
     }
 ?>
+<!-- Change Password Form in Modal Box -->
 <div class="modal" id="change_password">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -79,7 +83,7 @@
           </div><br/>
           <div class="form-group">
             <label>Enter the New Password:</label>
-            <input type="password" name="new" class="form-control" placeholder="New Password" required>
+            <input type="password" name="new" class="form-control" pattern="[A-Za-z0-9@_.]{6,10}" title="Must contain at least 6 and not more than 10 characters" placeholder="New Password" required>
           </div><br/>
           <div class="form-group" style="text-align: center">
             <input type="submit" value="Change Password" id="submit" class="btn login-btn" >
@@ -94,6 +98,7 @@
 </div>
 
 <script type="text/javascript">
+//AJAX call to change password
 $('#change_password_form').submit(function(e)
 {
     e.preventDefault();
@@ -108,13 +113,14 @@ $('#change_password_form').submit(function(e)
             if(res=="Password Changed Successfully.")
             {
                 $('#change_password_form')[0].reset();
-                
+
             }
         }
     });
 });
 </script>
 <script>
+    //Function to open and close sidenav bar
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
     }

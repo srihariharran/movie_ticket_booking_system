@@ -1,3 +1,4 @@
+<!-- sign up form in modal -->
 <div class="modal fade" id="myModal1" >
     <div class="modal-dialog" >
       <div class="modal-content" >
@@ -23,7 +24,7 @@
             </div><br/>
             <div class="form-group">
                 <img src="images/password.png" class="input_img" />
-                <input type="password" name="password" class="form-fields" pattern="[A-Za-z0-9@_.]{6,10}" title="Must contain one special letter, and at least 6 and not more than 10 characters" placeholder="Password" required/>
+                <input type="password" name="password" class="form-fields" pattern="[A-Za-z0-9@_.]{6,10}" title="Must contain at least 6 and not more than 10 characters" placeholder="Password" required/>
             </div><br/>
             <div class="form-group">
                 <img src="images/mobile.png" class="input_img" />
@@ -44,6 +45,7 @@
   </div>
 <script src="js/jquery.min.js"></script>
 <script>
+    //Ajax call to store user details in DB table
     $('#signup-form').submit(function(e)
     {
         e.preventDefault();

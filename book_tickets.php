@@ -1,4 +1,5 @@
 <?php
+//Checking for session variable
 if(isset($_SESSION['key']) && $_SESSION['key']==='User')
 {
 ?>
@@ -6,6 +7,7 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='User')
 <html>
 <head>
     <title>Book Tickets</title>
+    <!--Including Bootstrap Files,Jquery and Stylesheet -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -17,8 +19,11 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='User')
 </head>
 <body>
     <?php 
+        //Header
         include 'header.php';
+        //DB Connect
         include 'db.php';
+        //Storing Form values to variable
         $movie_name=$_POST['movie_name'];
         $screen=$_POST['screen'];
         $date=$_POST['date'];
@@ -30,6 +35,7 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='User')
         <div class="container">
             <div class="table-responsive">
                 <table class="table">
+                <!-- Printing Movie Details -->
                 <tr><th>Movie Name</th><th>Screen</th><th>Show Time</th><th>Date</th><th>Amount</th></tr>
                 <tr>
                     <td><?php echo $movie_name; ?></td>
@@ -42,7 +48,7 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='User')
             </div>
         <form method="POST" action="booking_confirmation.php" >
         <div class="row">
-            
+            <!-- Seat Selection -->
             <div class="col-sm-1"></div>
             
             <?php 
@@ -112,6 +118,7 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='User')
                             }
 
                         }
+                        
                     }
                 }
                 else
@@ -122,16 +129,15 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='User')
              <div class="col-sm-1"></div>               
             </div>
             <br/>
+            <div class="text-center"><p class="btn-danger btn">Booked</p>&nbsp;<p class="btn-success  btn">Available</p></div>
+            <br/>
             <div class="form-group text-center" id="divs">
-                
                     <input type="hidden" name="movie_name" value="<?php echo $movie_name; ?>" />
                     <input type="hidden" name="screen" value="<?php echo $screen; ?>" />
                     <input type="hidden" name="date" value="<?php echo $date; ?>" />
                     <input type="hidden" name="show_time" value="<?php echo $show_time; ?>" />
                     <input type="hidden" name="ticket_price" value="<?php echo $ticket_price; ?>" />
                     <input type="submit" value="Book Now" class="btn btn-success">
-                
-                
                 <div class="btn btn-danger" id="cancel">Cancel</div>
             </div>
             </form>
@@ -144,10 +150,11 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='User')
         
     
     <br/>
-
+    <!-- Footer -->
     <?php include 'footer.php'; ?>
 
 <script>
+//Validating seat selection
 $('#divs').hide();
 $('.seats').click(function()
 {
