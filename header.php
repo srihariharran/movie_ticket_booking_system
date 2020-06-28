@@ -8,6 +8,7 @@
                 ?>
                 <a href="admin_home.php"><i class="fa fa-home"></i>&nbsp;Home</a>
                 <a href="add_movie_form.php"><i class="fa fa-plus"></i>&nbsp;Add Movie</a>
+                <a href="screen_details.php"><i class="fa fa-plus"></i>&nbsp;Screen Details</a>
                 <a href="logout.php"><i class="fa fa-sign-out"></i>&nbsp;Logout</a>
                 <?php
             }
