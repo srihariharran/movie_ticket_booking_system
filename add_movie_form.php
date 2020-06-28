@@ -80,7 +80,7 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='Admin')
                     </div>
                     <br/>
                     <div class="form-group text-center">
-                        <input type="submit" class="btn btn-primary" value="Add Movie" />
+                        <input type="submit" class="btn btn-primary" style="display: none" id="get_time" value="Add Movie" />
                     </div>
                 </form>
             </div>
@@ -88,8 +88,31 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='Admin')
     </div>
     <br/>
     <br/>
+
     <!-- Footer -->
 	<?php include 'footer.php'; ?>
+    
+    <script>
+            $('#date').on('change',function()
+            {
+                const oneDay = 24 * 60 * 60 * 1000;
+                const current_date = new Date();
+                var d=$('#date').val();
+                const select_date=new Date(d);
+                const diffDays = Math.round(Math.abs((current_date - select_date) / oneDay));
+                
+                if(diffDays>3)
+                {
+                    alert("Invalid Date");
+                    $('#get_time').hide();
+                }
+                else
+                {
+                    $('#get_time').show();
+                }
+                
+            });
+    </script>
 </body>
 </html>
 <?php

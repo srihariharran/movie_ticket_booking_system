@@ -7,16 +7,14 @@
         //Getting Current Date
         date_default_timezone_set('Asia/Kolkata');
         $current_date=date("Y-m-d");
-        //Geeting the date of next 3 days date
-        $date_val=date("Y-m-d",strtotime($current_date . " + 3 day"));
+        
         //Storing form values in variable
         $movie_name=$_POST['movie_name'];
         $date=$_POST['date'];
         //Data Validation
         if($date>=$current_date)
         {
-            if($date<=$date_val)
-            {
+            
                 //Sql query to get the movie details
                 $sql="SELECT movie_name,screen,show_timings,ticket_price FROM movie_details WHERE date='$date' AND movie_name='$movie_name'";
                 if($res=mysqli_query($con,$sql))
@@ -62,16 +60,7 @@
                 {
                     echo mysqli_error($con);
                 }
-            }
-            else
-            {
-                ?>
-                <script>
-                    alert("Invalid Date,You can book movies only for next 3 days");
-                    location.replace("home.php");
-                </script>
-                <?php
-            }
+            
         }
         else
             {

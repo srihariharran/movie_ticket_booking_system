@@ -24,12 +24,11 @@
 	//Validating Date
 	if($date>=$current_date)
 	{
-		if($date<=$date_val)
-		{
+		
 			//Checking poster size is less than 2MB
 			if($file_size<=2097152)
 			{
-				$poster = addslashes(file_get_contents($file_name)); 
+				$poster = addslashes(file_get_contents($file_name));
 				//Looping to insert movie details into DB table
 				foreach ($time as $show_time) {
 					$sql="INSERT INTO movie_details (`movie_name`,`screen`,`date`,`show_timings`,`poster`,`ticket_price`) VALUES ('$movie_name','$screen','$date','$show_time','$poster','$price')";
@@ -58,21 +57,12 @@
 		    {
 		    	?>
 		    	<script>
-		    		alert("Invalid Poster Format or Poster size is greater than 2MB,Poster Should be in jpg,jpeg or png format");
+		    		alert("Poster size is greater than 2MB,Poster Should be in jpg,jpeg or png format");
 		    		location.replace("add_movie_form.php");
 		    	</script>
 		    	<?php
 		    }
-		}
-		else
-		{
-			?>
-		    	<script>
-		    		alert("Invalid Date,You can add movies only for next 3 days");
-		    		location.replace("add_movie_form.php");
-		    	</script>
-		    	<?php
-		}
+		
 	}
 	else
 		{

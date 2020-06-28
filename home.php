@@ -59,7 +59,7 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='User')
                        </div><br/>
                        
                         <div class="form-group text-center">
-                            <input type="submit" class="btn btn-primary" value="Get Show Time" />
+                            <input type="submit" class="btn btn-primary" id="get_time" style="display: none"  value="Get Show Time" />
                         </div>
                         </form>
                     </div>
@@ -81,10 +81,30 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='User')
     <?php include 'footer.php'; ?>
 
 <script>
+$('#date').on('change',function()
+{
+    const oneDay = 24 * 60 * 60 * 1000;
+    const current_date = new Date();
+    var d=$('#date').val();
+    const select_date=new Date(d);
+    const diffDays = Math.round(Math.abs((current_date - select_date) / oneDay));
+    
+    if(diffDays>3)
+    {
+        alert("Invalid Date");
+        $('#get_time').hide();
+    }
+    else
+    {
+        $('#get_time').show();
+    }
+    
+});
 //AJAX Call to get Avaliability
 $('#movie_list').submit(function(e)
 {
     e.preventDefault();
+
     $('.spinner-border').show();
     $.ajax({
         url:"movies.php",
