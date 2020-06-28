@@ -38,7 +38,7 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='User')
                             <label>Select the Movie:</label>
                             <select name="movie_name" class="form-control">
                             <?php 
-                                $sql="SELECT movie_name FROM movie_details";
+                                $sql="SELECT DISTINCT(movie_name) FROM movie_details";
                                 if($res=mysqli_query($con,$sql))
                                 {
                                     while($row=mysqli_fetch_array($res))
