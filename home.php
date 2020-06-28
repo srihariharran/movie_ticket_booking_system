@@ -91,7 +91,7 @@ $('#date').on('change',function()
     
     if(diffDays>3)
     {
-        alert("Invalid Date");
+        alert("Invalid Date,You can book tickets for next 3 days only");
         $('#get_time').hide();
     }
     else

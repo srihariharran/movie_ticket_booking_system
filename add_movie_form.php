@@ -103,7 +103,7 @@ if(isset($_SESSION['key']) && $_SESSION['key']==='Admin')
                 
                 if(diffDays>3)
                 {
-                    alert("Invalid Date");
+                    alert("Invalid Date,You can book tickets for next 3 days only");
                     $('#get_time').hide();
                 }
                 else
